@@ -40,6 +40,6 @@ while True:
         prefix, key = get_prefix(event)
         dic_for_event[prefix] = key
 
-with open("./args/input.json", "w", encoding = "utf-8") as f:
+with open("../args/input.json", "w", encoding = "utf-8") as f:
     json.dump(dic_for_event, f, ensure_ascii=False)
 window.close()
