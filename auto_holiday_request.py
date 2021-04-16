@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# coding: utf-8
 import time
 import datetime
 from selenium import webdriver
@@ -68,7 +70,7 @@ else :
           Inputs.send_keys('{0:%d}'.format(now))
           Inputs = driver.find_element_by_name('pat1_name') 
           Inputs = driver.find_element_by_name('pat1_day1')
-          Inputs.send_keys(f"{month1}月{day1}日 10:00〜{month2}月{day2}日 22:00")
+          Inputs.send_keys(f"{month1}月{day1}日 10:00 ~ {month2}月{day2}日 22:00")
           Inputs = driver.find_element_by_name('pat1_place')
           Inputs.send_keys('B1B2棟331, 326号室') 
           Inputs = driver.find_element_by_name('pat1_naiyo')
