@@ -7,8 +7,9 @@ from selenium.webdriver.support.ui import Select
 import gui_for_ahr
 import json
 from tools import first_time_setting
+import sys
 
-json_for_event = open("./args/input.json", "r", encoding = "utf-8")
+json_for_event = open("../args/input.json", "r", encoding = "utf-8")
 event_dic = json.load(json_for_event)
 
 if not 're_setting' in event_dic:     
@@ -16,7 +17,7 @@ if not 're_setting' in event_dic:
 else :
      chenge_setting('re_setting')
 
-json_for_setting = open("./args/setting.json", "r", encoding = "utf-8")
+json_for_setting = open("../args/setting.json", "r", encoding = "utf-8")
 setting_dic = json.load(json_for_setting)
  
 
@@ -28,14 +29,16 @@ day2 = event_dic["day2"]
 naiyou = event_dic["naiyou"]
 coworker = event_dic["coworker"]
 close_key = "closed"
-
-
+arg = sys.argv[1]
 
 if close_key in event_dic.keys() :
      print("The experiment application tool has been closed. \n The termination process was done correctly.")
 
 else :
-     driver = webdriver.Chrome('./driver/chromedriver.exe')
+     if arg == "None":
+          driver =  webdriver.Chrome()
+     else :
+          driver = webdriver.Chrome(arg)
      website = 'http://www.bio.titech.ac.jp/in/support/night-ex/pdf_form_student.php'
      driver.get(website)
      now = datetime.datetime.now()
