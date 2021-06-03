@@ -1,4 +1,7 @@
+#!/usr/bin/env python
+# coding: utf-8
 import json
+import smtplib
 
 def get_prefix(key) :
     split_list = key.split("/")
@@ -39,3 +42,20 @@ def chenge_setting(key) :
         return None
     else :
         return None
+
+def send_mail(to_who, mail_content) :
+    smtp_host = "smtp.gmail.com"
+    smtp_port = 465
+    username = "ohta.masuda.lab@gmail.com"
+    password = "szqpsjnobdthncap" #後で変更
+    from_address = "ohta.masuda.lab@gmail.com"
+    to_address = to_who
+    subject = "Notification for experiments weekend" #日本語表記にすると文字化けが起こるため、件名は英語表記推奨
+    body = mail_content
+    message = ("From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n%s" % (from_address, to_address, subject, body))
+
+    smtp = smtplib.SMTP_SSL(smtp_host, smtp_port)
+    smtp.login(username, password)
+    result = smtp.sendmail(from_address, to_address, message.encode('shift_jis'))
+    print(result)
+    return None
