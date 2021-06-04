@@ -7,12 +7,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import gui_for_ahr
 import json
-<<<<<<< HEAD
 from tools import first_time_setting, send_mail
-=======
-from tools import first_time_setting
-import sys
->>>>>>> 2f9003dc9a03c1ef023eadcb1a222936f4afb3e4
 
 json_for_event = open("../args/input.json", "r", encoding = "utf-8")
 event_dic = json.load(json_for_event)
@@ -36,15 +31,11 @@ month2 = event_dic["month2"]
 day2 = event_dic["day2"]
 naiyou = event_dic["naiyou"]
 coworker = event_dic["coworker"]
-<<<<<<< HEAD
 youin = event_dic["youin"]
 taisaku = event_dic["taisaku"]
 
 close_key = "closed"
-=======
-close_key = "closed"
 arg = sys.argv[1]
->>>>>>> 2f9003dc9a03c1ef023eadcb1a222936f4afb3e4
 
 partition = "=" * 30
 name = setting_dic["name"]
