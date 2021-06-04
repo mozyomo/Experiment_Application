@@ -9,7 +9,7 @@ import gui_for_ahr
 import json
 from tools import first_time_setting, send_mail
 
-json_for_event = open("./args/input.json", "r", encoding = "utf-8")
+json_for_event = open("../args/input.json", "r", encoding = "utf-8")
 event_dic = json.load(json_for_event)
 
 if not 're_setting' in event_dic:     
@@ -17,7 +17,7 @@ if not 're_setting' in event_dic:
 else :
      chenge_setting('re_setting')
 
-json_for_setting = open("./args/setting.json", "r", encoding = "utf-8")
+json_for_setting = open("../args/setting.json", "r", encoding = "utf-8")
 setting_dic = json.load(json_for_setting)
 now = datetime.datetime.now()
 
