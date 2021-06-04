@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"month1": "6", "day1": "31", "month2": "6", "day2": "31", "naiyou": "クリーンベンチ", "youin": "ガスバーナーからの引火", "taisaku": "火の扱いに注意する", "coworker": "唐司"}
-=======
-{"month1": "3", "day1": "28", "month2": "3", "day2": "28", "naiyou": "DNA抽出", "youin": "試薬の飛散", "taisaku": "ガラス器具の扱いに注意する", "coworker": "唐司"}
->>>>>>> 2f9003dc9a03c1ef023eadcb1a222936f4afb3e4
+{"month1": "6", "day1": "31", "month2": "6", "day2": "31", "naiyou": "DNA抽出", "youin": "試薬の飛散", "taisaku": "ガラス器具の扱いに注意する", "coworker": "唐司"}

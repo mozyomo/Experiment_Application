@@ -57,6 +57,6 @@ while True:
     elif prefix == "coworker" :
         window['coworker_text'].update(key_list[-1])
 
-with open("../args/input.json", "w", encoding = "utf-8") as f:
+with open("./args/input.json", "w", encoding = "utf-8") as f:
     json.dump(dic_for_event, f, ensure_ascii=False)
 window.close()
