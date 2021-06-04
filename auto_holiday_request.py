@@ -7,9 +7,14 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import gui_for_ahr
 import json
+<<<<<<< HEAD
 from tools import first_time_setting, send_mail
+=======
+from tools import first_time_setting
+import sys
+>>>>>>> 2f9003dc9a03c1ef023eadcb1a222936f4afb3e4
 
-json_for_event = open("./args/input.json", "r", encoding = "utf-8")
+json_for_event = open("../args/input.json", "r", encoding = "utf-8")
 event_dic = json.load(json_for_event)
 
 if not 're_setting' in event_dic:     
@@ -17,7 +22,7 @@ if not 're_setting' in event_dic:
 else :
      chenge_setting('re_setting')
 
-json_for_setting = open("./args/setting.json", "r", encoding = "utf-8")
+json_for_setting = open("../args/setting.json", "r", encoding = "utf-8")
 setting_dic = json.load(json_for_setting)
 now = datetime.datetime.now()
 
@@ -31,10 +36,15 @@ month2 = event_dic["month2"]
 day2 = event_dic["day2"]
 naiyou = event_dic["naiyou"]
 coworker = event_dic["coworker"]
+<<<<<<< HEAD
 youin = event_dic["youin"]
 taisaku = event_dic["taisaku"]
 
 close_key = "closed"
+=======
+close_key = "closed"
+arg = sys.argv[1]
+>>>>>>> 2f9003dc9a03c1ef023eadcb1a222936f4afb3e4
 
 partition = "=" * 30
 name = setting_dic["name"]
@@ -47,7 +57,10 @@ if close_key in event_dic.keys() :
      print("The experiment application tool has been closed. \n The termination process was done correctly.")
 
 else :
-     driver = webdriver.Chrome('./driver/chromedriver.exe')
+     if arg == "None":
+          driver =  webdriver.Chrome()
+     else :
+          driver = webdriver.Chrome(arg)
      website = 'http://www.bio.titech.ac.jp/in/support/night-ex/pdf_form_student.php'
      driver.get(website)
      if (driver.current_url == website):
