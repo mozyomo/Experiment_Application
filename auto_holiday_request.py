@@ -4,6 +4,7 @@
 import time
 import datetime
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import Select
 import gui_for_ahr
 import json
@@ -47,7 +48,7 @@ if close_key in event_dic.keys() :
      print("The experiment application tool has been closed. \n The termination process was done correctly.")
 
 else :
-     driver = webdriver.Chrome('./driver/chromedriver.exe')
+     driver = webdriver.Chrome(ChromeDriverManager().install())
      website = 'http://www.bio.titech.ac.jp/in/support/night-ex/pdf_form_student.php'
      driver.get(website)
      if (driver.current_url == website):
@@ -93,6 +94,6 @@ else :
           Inputs = driver.find_element_by_name('risk1_taisaku')
           Inputs.send_keys(taisaku) 
      print('Text input is complete.')                                                      #errorなく動作すると、cmdに「テキスト入力完了」と表示される
-     send_mail(TO_ADDRESS, mail_text)
+     #send_mail(TO_ADDRESS, mail_text)
      print(mail_text)
 
