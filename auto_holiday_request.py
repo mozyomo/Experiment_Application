@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
+
 import time
 import datetime
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import Select
 import gui_for_ahr
 import json
-from tools import first_time_setting
+from tools import first_time_setting, send_mail
 
 json_for_event = open("./args/input.json", "r", encoding = "utf-8")
 event_dic = json.load(json_for_event)
@@ -18,27 +20,37 @@ else :
 
 json_for_setting = open("./args/setting.json", "r", encoding = "utf-8")
 setting_dic = json.load(json_for_setting)
- 
+now = datetime.datetime.now()
 
-
+TO_ADDRESS = "shimojima.m.aa@m.titech.ac.jp"
+this_year = '{0:%Y}'.format(now)
+this_month = '{0:%m}'.format(now)
+this_day = '{0:%d}'.format(now)
 month1 = event_dic["month1"]
 day1 = event_dic["day1"]
 month2 = event_dic["month2"]
 day2 = event_dic["day2"]
 naiyou = event_dic["naiyou"]
 coworker = event_dic["coworker"]
+youin = event_dic["youin"]
+taisaku = event_dic["taisaku"]
+
 close_key = "closed"
 
-
-
+partition = "=" * 30
+name = setting_dic["name"]
+gakuseki = setting_dic["gakuseki"] 
+mail_text = f"申請日:{this_year}年{this_month}月{this_day}日\
+      \n氏名:{name} \n 学籍番号:{gakuseki} \n {partition} \
+      \n 申請する日時：{month1}月{day1}日 10:00 ~{month2}月{day2}日 22:00\
+      \n 作業内容: {naiyou} \n 危険要因: {youin} \n 対策: {taisaku} \n 実験同伴者: {coworker}"
 if close_key in event_dic.keys() :
      print("The experiment application tool has been closed. \n The termination process was done correctly.")
 
 else :
-     driver = webdriver.Chrome('./driver/chromedriver.exe')
+     driver = webdriver.Chrome(ChromeDriverManager().install())
      website = 'http://www.bio.titech.ac.jp/in/support/night-ex/pdf_form_student.php'
      driver.get(website)
-     now = datetime.datetime.now()
      if (driver.current_url == website):
           Inputs = driver.find_element_by_name('pat1_name') 
           Inputs.send_keys(setting_dic["name"])
@@ -76,10 +88,12 @@ else :
           Inputs = driver.find_element_by_name('pat1_naiyo')
           Inputs.send_keys(f"{naiyou}, 同伴者： {coworker}") 
           Inputs = driver.find_element_by_name('risk1_name')
-          Inputs.send_keys(event_dic["naiyou"])
+          Inputs.send_keys(naiyou)
           Inputs = driver.find_element_by_name('risk1_youin')
-          Inputs.send_keys(event_dic["youin"]) 
+          Inputs.send_keys(youin) 
           Inputs = driver.find_element_by_name('risk1_taisaku')
-          Inputs.send_keys(event_dic["taisaku"]) 
+          Inputs.send_keys(taisaku) 
      print('Text input is complete.')                                                      #errorなく動作すると、cmdに「テキスト入力完了」と表示される
+     #send_mail(TO_ADDRESS, mail_text)
+     print(mail_text)
 
