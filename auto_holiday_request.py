@@ -4,6 +4,7 @@
 import time
 import datetime
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import Select
 import gui_for_ahr
 import json
@@ -48,10 +49,7 @@ if close_key in event_dic.keys() :
      print("The experiment application tool has been closed. \n The termination process was done correctly.")
 
 else :
-     if arg == "None":
-          driver =  webdriver.Chrome()
-     else :
-          driver = webdriver.Chrome(arg)
+     driver = webdriver.Chrome(ChromeDriverManager().install())
      website = 'http://www.bio.titech.ac.jp/in/support/night-ex/pdf_form_student.php'
      driver.get(website)
      if (driver.current_url == website):
