@@ -95,6 +95,6 @@ else :
           Inputs = driver.find_element_by_name('risk1_taisaku')
           Inputs.send_keys(taisaku) 
      print('Text input is complete.')                                                      #errorなく動作すると、cmdに「テキスト入力完了」と表示される
-     #send_mail(TO_ADDRESS, mail_text)
+     send_mail(TO_ADDRESS, mail_text)
      print(mail_text)
 
