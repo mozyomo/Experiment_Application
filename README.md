@@ -25,7 +25,7 @@ $ git clone [repository_name]
 7. 次回以降の始動には、run.batファイルを使用してください。(set_up.batでも起動はしますが、時間がかかりますので非推奨です)
 
 # 起動方法(Mac)
-1. 2. は共通。
+１.２. は共通。  
 3. terminalを開いて、以下のコマンドを入力
 ```
 $ cd /path/to/Experiment_Application/mac # /path/toの部分は環境によって変えてください
