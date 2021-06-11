@@ -36,7 +36,6 @@ youin = event_dic["youin"]
 taisaku = event_dic["taisaku"]
 
 close_key = "closed"
-arg = sys.argv[1]
 
 partition = "=" * 30
 name = setting_dic["name"]
